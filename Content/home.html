@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<link rel="stylesheet" href="css/bootstrap.min.css">
-<script src="js/bootstrap.min.js"></script>
 
 <head>
     <meta charset="utf-8">
@@ -11,21 +9,77 @@
     <title>Bootstrap 101 Template</title>
 
     <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/theme.css">
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+
     <![endif]-->
 </head>
 <body>
-<h1>Hello, world!</h1>
+<!-- Button trigger modal -->
+<button type="button" data-name="jian" class="btn  btn-primary prof " data-toggle="modal" data-target="#myModal" data-backdrop="static" data-keyboard="false">
+    Prof 1
+</button>
+<button type="button" data-name="franco"  class="btn  btn-primary prof" data-toggle="modal" data-target="#myModal">
+    Prof 2
+</button>
+<button type="button"  data-name="lastino" class="btn btn-primary prof" data-toggle="modal" data-target="#myModal">
+    Prof 3
+</button>
 
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="js/bootstrap.min.js"></script>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background:#000000;">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <center>
+                <h4 class="modal-title" style="color:white;" >Modal title</h4>
+                </center>
+            </div>
+            <div class="modal-body" style="color:#26e468;" >
+                <div class="container-fluid">
+<hr style="height:20px;margin-bottom:-30px;margin-top:50px;">
+                <div class="row">
+                    <center>
+                    <div class="col-lg-4"><span class="glyphicon glyphicon-envelope" style="float:middle;margin-top:30px;font-size:3em;color:white;"></span></div>
+                    <div class="col-lg-4"><img class="img-circle" style="height:125px;margin-top:-50px;" src="images/profile.jpg"/></div>
+                    <div class="col-lg-4"><span class="glyphicon glyphicon-envelope" style="float:middle;margin-top:30px;font-size:3em;color:white;"></span></div>
+                    </center>
+                </div>
+                <center><h1 id="displayname">Name</h1><br>
+                <h1>Specialization 1<span style="color:white;">|</span>Specialization 2</h1>
+                <br>
+                <table>
+                    <tr><td style="color:white;"><h2>Status:</h2></td><td><h2>Full Time</h2></td></tr>
+                    <tr><td style="color:white;"><h2>Rank:</h2></td><td><h2>Assistant</h2></td></tr>
+                </table>
+                </center>
+                </div>
+            </div>
+            <div class="modal-footer">
+
+                <center><button type="button" class="btn btn-default btn-lg"  style="border-radius:0px;width:40%;" data-dismiss="modal">Close</button></center>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).on("click",".prof", function()
+    {
+        var we =   $(this).data('name');
+document.getElementById("displayname").innerText = we;
+    });
+</script>
 </body>
 </html>
