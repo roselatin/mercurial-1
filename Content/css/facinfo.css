@@ -1,0 +1,60 @@
+@font-face {
+    font-family: 'Roboto';
+
+    src: url('../fonts/Roboto-Medium.ttf');
+}
+.label-spec {
+    background-color: #232323;
+    font-family: 'Roboto', serif;
+
+}
+.label-spec[href]:hover,
+.label-spec[href]:focus {
+    background-color: #232323;
+}
+
+.spec-info > h2
+{
+    color:white;
+    font-family: 'Roboto', serif;
+}
+
+.spec {
+    font-size:2em;
+}
+
+#header
+{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    background:#232323;
+    height:65px;
+    color:white;
+    padding:0px;
+
+}
+
+#content
+
+{
+
+    margin-top:75px;
+}
+
+body
+{
+    background:#535353;
+}
+
+#footer
+{
+    color:white;
+    height:60px;
+    position:absolute;
+    width:100%;
+    bottom:0;
+    background:#232323;
+
+}
