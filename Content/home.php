@@ -29,31 +29,34 @@
 <!-- Button trigger modal -->
 <div id="content" class="container-fluid" >
 
-<button type="button" data-name="FName LName #2" class="btn  btn-primary prof " data-toggle="modal" data-target="#myModal" data-backdrop="static" data-keyboard="false">
-    Prof 1
-</button>
-<button type="button" data-name="FName LName #2"  class="btn  btn-primary prof" data-toggle="modal" data-target="#myModal">
-    Prof 2
-</button>
-<button type="button"  data-name="FName LName #2" class="btn btn-primary prof" data-toggle="modal" data-target="#myModal">
-    Prof 3
-</button>
+    <div class="searc_box">
+        Search
+    <input type="text"/>
+    </div>
+    <div class="fac_list">
+    <img data-name="Orillo" data-facid="27040084" data-backdrop="static" data-keyboard="false" data-toggle="modal" data-target="#myModal" class="img-circle prof"  src="images/27040084.jpg"/>
+
+    <img data-name="FName LName #2" data-facid="27031034" data-backdrop="static" data-keyboard="false" data-toggle="modal" data-target="#myModal" class="img-circle prof"  src="images/27031034.jpg"/>
+
+    <img data-name="FName LName #3" data-facid="profile" data-backdrop="static" data-keyboard="false" data-toggle="modal" data-target="#myModal" class="img-circle prof"  src="images/profile.jpg"/>
+</div>
 
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header" >
+            <div class="modal-header text-center" >
+
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <center>
-                    <h4 class="modal-title" style="color:white;" >Faculty Information</h4>
-                </center>
-            </div>
+<div class="row" style="background:#000000;">
+                    <h4 class=" modal-title" style="color:white;font-size:3em;" >Faculty Information</h4>
+</div>
+                            </div>
             <div class="modal-body" style="color:#26e468;" >
                 <div class="container-fluid">
                     <hr style="height:20px;width:100%;margin-bottom:-30px;margin-top:50px;">
-                    <div class="row text-center"><img class="img-circle" style="height:125px;margin-top:-50px;" src="images/profile.jpg"/></div>
+                    <div class="row text-center"><img id="fac_pic" class="img-circle" style="height:125px;margin-top:-50px;" src="images/profile.jpg"/></div>
                     <div class="row text-center" style="margin-top:-50px;">
                         <div class="col-lg-6 "><span class="glyphicon glyphicon-envelope" style="float:middle;margin-top:30px;font-size:3em;color:white;"></span></div>
                         <div class="col-lg-6 "><span class="glyphicon glyphicon-envelope" style="float:middle;margin-top:30px;font-size:3em;color:white;"></span></div>
@@ -89,10 +92,12 @@
     $(document).on("click",".prof", function()
     {
         var we =   $(this).data('name');
+        var facid = "images/"+$(this).data('facid')+".jpg";
         document.getElementById("displayname").innerText = we;
+        document.getElementById("fac_pic").setAttribute("src",facid)
     });
 </script>
 </div>
-<?php include("footer.html"); ?>
+<?php include("footer.html");?>
 </body>
 </html>

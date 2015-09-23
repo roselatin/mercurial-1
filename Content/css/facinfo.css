@@ -25,22 +25,51 @@
 
 #header
 {
-    position:fixed;
-    top:0;
-    left:0;
     width:100%;
-    background:#232323;
+    background:#383838;
     height:65px;
     color:white;
-    padding:0px;
+    padding-top:10px;
+}
 
+
+#weblogo
+{
+    font-size:16px;
+    font-family:'Roboto';
+}
+#weblogo:hover
+{
+ cursor:pointer;
+
+    -webkit-stroke-width: 3px;
+    -webkit-stroke-color: #FFFFFF;
+    -webkit-fill-color: #FFFFFF;
+    text-shadow: 2px 0px 10px white;
+    -webkit-transition: width 0.3s; /*Safari & Chrome*/
+    transition: text-shadow 0.25s linear;
+    -moz-transition: width 0.3s; /* Firefox 4 */
+    -o-transition: width 0.3s; /* Opera */;
+}
+
+#logo
+{
+    position:absolute;
+    top:0;
+    background:#ffffff;
+}
+
+#logo:hover
+{
+    background:#26e468;
+    transition: background 0.25s linear;
 }
 
 #content
 
 {
-
-    margin-top:75px;
+    padding-top:20px;
+position:relative;
 }
 
 body
@@ -55,6 +84,17 @@ body
     position:absolute;
     width:100%;
     bottom:0;
-    background:#232323;
+    background:#383838;
 
 }
+
+.prof
+{
+    height:125px;
+}
+.prof:hover
+{
+  cursor:pointer;
+}
+
+
