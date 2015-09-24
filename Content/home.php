@@ -24,12 +24,12 @@
     <![endif]-->
 </head>
 <body>
-
 <?php include("header.html"); ?>
 <!-- Button trigger modal -->
 <div id="content" class="container-fluid" >
+    include("header.html")
 
-    <div class="searc_box">
+    <div class="search_box">
         Search
     <input type="text"/>
     </div>

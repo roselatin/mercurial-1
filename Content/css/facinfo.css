@@ -24,12 +24,26 @@
 }
 
 
-
+#main-header
+{
+    border-bottom:none;
+    background:#383838;
+    margin-bottom:40px;
+}
 
 #logo
 {
     background:#ffffff;
+    height:50px;
+    margin-top:0;
+}
 
+.navbar-brand
+{
+    position:absolute;
+    left:0;
+    padding-top:0px;
+    padding-bottom:0px;
 }
 
 #logo:hover
@@ -38,11 +52,33 @@
     transition: background 0.25s linear;
 }
 
-#content
 
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus
 {
+    color:white;
+    background:#555555;
+}
+
+.navbar-default .navbar-nav > li > a
+{
+    color:white;
+}
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus
+{
+    color:#26e468;s
+    transition: color 0.25s linear;
+}
+
+
+
+
+#content
+{
+    position:relative;
+    top:40px;
     padding-top:20px;
-position:relative;
+    position:relative;
 }
 
 body
