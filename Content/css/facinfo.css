@@ -70,4 +70,6 @@ body
   cursor:pointer;
 }
 
-
+.fac_list{
+    line-height: 150px;
+}
