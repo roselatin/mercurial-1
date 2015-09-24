@@ -27,7 +27,7 @@
 <?php include("header.html"); ?>
 <!-- Button trigger modal -->
 <div id="content" class="container-fluid" >
-    include("header.html")
+
 
     <div class="search_box">
         Search
