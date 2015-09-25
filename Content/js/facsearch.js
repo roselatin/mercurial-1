@@ -22,10 +22,11 @@ $(document).on("ready",function() {
         dataType: "json",
         url: "loadfac.php", //Relative or absolute path to response.php fill
         beforeSend: function(){
-            document.getElementById("fac_list").innerHTML = "<div id='faculty_preloader' class='loader'>Loading</div>";
+            document.getElementById("fac_list").innerHTML = "<div id='faculty_preloader' class='text-center'><h1>LOADING FACULTY LIST</h1><BR><div  class='loader'></div>";
             // start = new Date().getTime();
         },
         success: function (data) {
+            setTimeout(function(){
             $("#faculty_preloader").remove();
             Profs = jQuery.parseJSON(data);
             $("#fac_list").append("<input class='search' placeholder='Search' /><ul id='faculty' class='list list-inline'>");
@@ -37,7 +38,7 @@ $(document).on("ready",function() {
                 var rank = Profs[i].Rank;
                 var status = Profs[i].Status;
                 var email = Profs[i].Email;
-                $("#faculty").append("<li style='width:20%;height:20%;' class='text-center'><img  data-email='"+email+"' data-status='"+status+"'  data-rank='"+rank+"' data-name='"+name+"' class='img-circle prof' data-facid='"+facid+"' id='"+facid+"' data-toggle='modal' data-target='#myModal'   src='images\\faculty\\"+ facid + ".jpg' onerror='showerror(this.id)' /> <br><span class='name'>"+name+"</span></li>");
+                $("#faculty").append("<li  class='fac-item text-center'><img  data-email='"+email+"' data-status='"+status+"'  data-rank='"+rank+"' data-name='"+name+"' class='img-circle prof' data-facid='"+facid+"' id='"+facid+"' data-toggle='modal' data-target='#myModal'   src='images\\faculty\\"+ facid + ".jpg' onerror='showerror(this.id)' /> <br><span class='name'>"+name+"</span></li>");
 
             }
             $("#fac_list").append("</ul>");
@@ -46,12 +47,24 @@ $(document).on("ready",function() {
             };
 
             var userList = new List('fac_list', options);
-
+            },  500);
             //   ShowProfs();
         }
     });
 });
 
+/* blur on modal open, unblur on close */
+$('#myModal').on('show.bs.modal', function () {
+    $('#fac_list ').addClass('blur');
+    $('.container ').addClass('blur');
+
+})
+
+$('#myModal').on('hide.bs.modal', function () {
+    $('#fac_list').removeClass('blur');
+    $('.container ').removeClass('blur');
+
+})
 
 function showerror(a)
 {

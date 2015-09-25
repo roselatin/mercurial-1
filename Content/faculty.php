@@ -10,20 +10,9 @@
     <!-- Bootstrap -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/theme.css">
-    <link rel="stylesheet" href="css/facinfo.css">
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="js/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/list.min.js"></script>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/faculty.css">
 
-
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-
-    <![endif]-->
 
 </head>
 <body>
@@ -34,7 +23,6 @@
 <div id="content" class="container-fluid" >
 
     <div id="fac_list">
-
 </div>
 
 
@@ -76,7 +64,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <center><button type="button" class="btn btn-default btn-lg"  style="border-radius:0px;width:40%;" data-dismiss="modal">Close</button></center>
+                <center><button  class="btn btn-4 btn-4b"  style="font-family:Helvetica;" data-dismiss="modal">Close</button></center>
             </div>
         </div>
     </div>
@@ -86,9 +74,13 @@
     </div>
 <?php include("footer.html");?>
 </body>
+<script src="js/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.min.js"></script>
+<script src="js/list.min.js"></script>
 <script src="js/facsearch.js"></script>
+<script src="js/modernizr.custom.js"></script>
 
-ccxzxzcxzczxczxzxczxczxczxczxczxc
 </html>
 
 
