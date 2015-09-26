@@ -1,6 +1,7 @@
 <!Doctype html>
 <html>
 
+<link rel="stylesheet" href="css/home.css">
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/theme.css">
 <link rel="stylesheet" href="css/global.css">
@@ -61,18 +62,14 @@
         <li data-target="#myCarousel" data-slide-to="5"></li>
         <li data-target="#myCarousel" data-slide-to="6"></li>
         <li data-target="#myCarousel" data-slide-to="7"></li>
-        <li data-target="#myCarousel" data-slide-to="8"></li>
-        <li data-target="#myCarousel" data-slide-to="9"></li>
-        <li data-target="#myCarousel" data-slide-to="10"></li>
-        <li data-target="#myCarousel" data-slide-to="11"></li>
-        <li data-target="#myCarousel" data-slide-to="12"></li>
     </ol>
 
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
         <div class="item active">
             <img src="images/events/Animobiz.jpg" alt="Animo Biz">
-            <div class="carousel-caption">
+            <div class="carousel-caption"
+                >
                 <h3>Animo Biz</h3>
                 <p>Have a great product idea and want to test it out?
                     Don't worry, BIZ is your chance! Visit www.bit.ly/AnimoBIZ !</p>
@@ -80,8 +77,18 @@
         </div>
 
         <div class="item">
+            <img src="images/events/ARW_ECES.jpg" alt="ECES ARW 2015">
+            <div class="carousel-caption"
+                 >
+                <h3>ECES ARW 2015</h3>
+                <p>Annual Recruitment Week for ECES. Join ECES NOW!</p>
+            </div>
+        </div>
+
+        <div class="item">
             <img src="images/events/Utour.jpg" alt="Unilever Tour">
-            <div class="carousel-caption">
+            <div class="carousel-caption"
+                 >
                 <h3>U-TOUR 2015</h3>
                 <p>Unilever is coming to De La Salle University’s Henry Sy Grounds to showcase the different programmes they have this year that are especially for you!</p>
             </div>
@@ -96,7 +103,7 @@
         </div>
 
         <div class="item">
-            <img src="images/events/PCB_seminar.jpg" alt="PCB Seminar">
+            <img class="img-responsive center-block" src="images/events/PCB_seminar.jpg" alt="PCB Seminar">
             <div class="carousel-caption">
                 <h3>PCB Seminar</h3>
                 <p>Learn the basics of PCB making from our very own Research and Development officers!
