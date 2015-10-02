@@ -1,20 +1,47 @@
-.carousel-inner > .item > img {
-    margin: 0 auto;
+.carousel-inner .active.left
+{ left: -33%; }
+.carousel-inner .next
+{ left:  33%; }
+.carousel-inner .prev
+{ left: -33%; }
+.carousel-control.left,.carousel-control.right
+{background-image:none;}
+
+#myCarousel{
+    margin-top:15%;
 }
 
-.navbar {
-    margin-bottom: 0;
+body > div.col-md-7{
+    margin-left: 7%;
+}
+body > div.footer{
+    margin-top: 90%;
+}
+body > div.col-md-7{
+    width: 85%;
 }
 
-.slide-content{
-    color:white;
-    margin-top:25%;
+
+.imgDescription {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(128, 128, 128,.75);
+    color: #fff;
+
+
+    visibility: hidden;
+    opacity: 0;
+
+    /*remove comment if you want a gradual transition between states
+    -webkit-transition: visibility opacity 0.2s;
+    */
 }
 
-.slide-wrapper {
-    margin-top:8%;
-}
 
-.slide-image img{
-
+.imgWrap:hover .imgDescription {
+    visibility: visible;
+    opacity: 1;
 }
