@@ -136,3 +136,51 @@ input:focus {
 .blur {
     -webkit-filter: blur(2px) grayscale(75%);
 }
+
+.search
+{
+    width:100%;
+}
+
+.search:before
+{
+    content:url("/Content/images/headerbg.jpg");
+    background:#222222;
+}
+
+ul
+{
+    column-count:4;
+}
+
+
+#faculty > li
+{
+margin-bottom:12px;
+height:250px;
+display:inline-block;
+}
+
+
+.name
+{
+   font-family:'Helvetica';
+    font-size:24px;
+    font-weight:lighter;
+    padding:5px;
+    color:white;
+    align-content:center;
+
+}
+
+.modal-open .navbar-fixed-top,
+.modal-open .navbar-fixed-bottom {
+    margin-right: 0;
+    padding-right:0px;
+}
+
+body.modal-open{
+    margin-right: 0;
+    padding-right:0px;
+    overflow-y:scroll;
+}
