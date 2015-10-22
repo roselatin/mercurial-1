@@ -54,20 +54,20 @@
                 <h2 style="color:#000000;">Professionals living the La Sallian values of Religio, Mores and Cultura</h2>
             </div>
             <div class="column"  style="margin-bottom:2.5em;">
-                <span style="color:darkgreen;;padding-top:0.4em;padding-right:0.1em;font-size:8em;border-color:darkgreen;" class="circle glyphicon glyphicon-education"></span>
+                <span style="color:#3093d5;padding-top:0.4em;padding-right:0.1em;font-size:8em;border-color:#3093d5;" class="circle glyphicon glyphicon-user"></span>
                 <h2  style="float:right;color:#000000;">Professionals committed to the improvement of the Filipinos quality of life</h2>
 
             </div>
         </div>
         <div class="col-2">
             <div class="column">
-                <span style="color:#c7254e;padding-top:0.4em;padding-right:0.1em;font-size:8em;border-color:#c7254e;" class="circle glyphicon glyphicon-education"></span>
+                <span style="color:forestgreen;padding-top:0.4em;padding-right:0.1em;font-size:8em;border-color:forestgreen;" class="circle glyphicon glyphicon-education"></span>
 
                 <h2 style="color:#000000;">Professionals devoted to the standards and dignity of the ECE and CpE professions</h2>
 
             </div>
             <div class="column">
-                <span style="color:#c7254e;padding-top:0.4em;padding-right:0.1em;font-size:8em;border-color:#c7254e;" class="circle glyphicon glyphicon-flag"></span>
+                <span style="color:orange;padding-top:0.4em;padding-right:0.1em;font-size:8em;border-color:orange;" class="circle glyphicon glyphicon-flag"></span>
                 <h2 style="float:right;color:#000000;">Professionals with a strong sense of nationalism responding to needs of the country and its people.</h2>
 
             </div>

@@ -64,7 +64,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <center><button  class="btn btn-4 btn-4b"  style="font-family:Helvetica;" data-dismiss="modal">Close</button></center>
+                <center><button  class="btn btn-4 btn-4b"  style="font-family:Helvetica;outline:none;" data-dismiss="modal">Close</button></center>
             </div>
         </div>
     </div>

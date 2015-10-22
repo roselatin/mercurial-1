@@ -5944,7 +5944,7 @@ button.close {
 }
 .modal-backdrop.in {
   opacity: 0.5;
-  filter: alpha(opacity=50);
+  filter: alpha(opacity=100);
 }
 .modal-header {
   padding: 15px;
