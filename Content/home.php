@@ -1,57 +1,28 @@
-<!Doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
-<link rel="stylesheet" href="css/bootstrap.min.css">
-<link rel="stylesheet" href="css/theme.css">
-<link rel="stylesheet" href="css/global.css">
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="js/jquery.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="js/bootstrap.min.js"></script>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Testing</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/global.css">
 
+</head>
 <body>
-
-
-
+<div id="wrapper">
 <?php include("header.html");?>
-<div class="wrapper">
-
-    <div class="container-fluid "id="content">
-        <button class="btn btn-4 btn-4b" style="font-family:Helvetica;" data-dismiss="modal">Close</button>
-
-        HOME
-    </div>
-    Electronics System Group
-    -Electronic Systems Engineering focuses on the integration of electronics, computers, and communication
-    technologies in many different types of systems.
-
-    Communications System Group
-    -Communication Systems provides comprehensive knowledge on current and emerging technologies in the
-    design and development of communications-based networks and systems. The program addresses advances in
-    electronics, computing, networking, and wireless technologies.
-
-    -Communications system engineering may involve developing or maintaining cable-based or wireless telephone
-    and voicemail sysems, group scheduling programs, webinars, Voice over Internet Protocol or automatic
-    call answering and routing systems.
-
-    Digital Signal Processing Group
-    -Digital Signal Processing, has emerged as an important technology for modern electronic systems. It is a
-    form of embedded design that is one of the newest and hottest fields, and is considered to be the workhouse
-    of choice for many computational-intensive applications. Modern applications include biomedical, communications,
-    imaging, speech, video signal, and multimedia signal processing.
-
-    Computing and Information Technology Group
-    - Computing and Information Technology includes software development, networking, and database design.
-
-
-    Embedded System Group
-    - Embedded Systems development ranges from microprocessor-based control systems, to system-on-chip (SoC) design,
-    and device software development.
-
+    <div id="content">
+<div class="container-fluid">
+    Hello World
 </div>
-
+</div>
 <?php include("footer.html");?>
+</div>
 </body>
-
-
 </html>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>

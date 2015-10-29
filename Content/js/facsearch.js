@@ -13,6 +13,7 @@
 
     });
 
+
 //Load the database on page load
 
 $(document).on("ready",function() {
@@ -22,14 +23,14 @@ $(document).on("ready",function() {
         dataType: "json",
         url: "loadfac.php", //Relative or absolute path to response.php fill
         beforeSend: function(){
-            document.getElementById("fac_list").innerHTML = "<div id='faculty_preloader' class='text-center'><h1>LOADING FACULTY LIST</h1><BR><div  class='loader'></div>";
+            document.getElementById("fac_list").innerHTML = "<div id='faculty_preloader' class='text-center'><h1>Loading Faculty</h1><BR><div  class='loader'></div>";
             // start = new Date().getTime();
         },
         success: function (data) {
 
             $("#faculty_preloader").remove();
             Profs = jQuery.parseJSON(data);
-            $("#fac_list").append("<div id='fixed_search' >Search Faculty<input style='position:fixed;' class='search' placeholder='Search'/> </div>");
+            $("#fac_list").append("<div id='fixed_search'  ><div class='fscontainer'><div class='col-lg-5' style='float:none;width:30%;display:table-cell' ><span style='color:white;'>Search Faculty</span></div><div class='col-lg-7' style='float:none;'><input  style='width:100%;' class='search' placeholder='Search'/> </div></div>");
             $("#fac_list").append("<div style='position:relative;top:80px;height:100%;'><ul id='faculty' class='list list-inline'>");
             for(var i=0;i<Profs.length;i++)
             {

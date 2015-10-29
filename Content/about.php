@@ -1,6 +1,6 @@
 <!Doctype html>
     <html>
-<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
 <link rel="stylesheet" href="css/global.css">
 <link rel="stylesheet" href="css/about.css">
 <link rel="stylesheet" href="css/icons.css">
@@ -13,16 +13,10 @@
 
 
 <?php include("header.html");?>
-<div class="container" style="width:100%;padding:0;margin:0;">
-
+<div id="content">
+<div class="container-fluid" >
     <section style="height:400px;"class="col-2 color  ">
-        <div style="width:100%;height:400px;z-index: 0;   position:fixed;top:0;left:0;-webkit-filter: brightness(0.6) grayscale(70%);background-image:url(images/headerbg.jpg);"
-></div>
-<div style="position: fixed;
-  left: 60px;
-  top:140px;
-  width:100%;
-  z-index: 0;" class="text-center">
+<div  class="text-center">
         <div   class="column ">
             <h2 style="font-family:Roboto;font-size:12em">ABOUT</h2>
         </div>
@@ -74,6 +68,7 @@
         </div>
 
     </section>
+</div>
 </div>
 <?php include("footer.html");?>
 </body>

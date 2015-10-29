@@ -1,0 +1,10 @@
+.carousel-inner .active.left { left: -33%; }
+.carousel-inner .next        { left:  33%; }
+.carousel-inner .prev        { left: -33%; }
+.carousel-control.left,.carousel-control.right {background-image:none;}
+
+.col-md-4
+{
+   padding-left:5px;
+    padding-right:5px;
+}

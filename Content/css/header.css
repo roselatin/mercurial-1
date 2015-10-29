@@ -1,0 +1,46 @@
+
+#logo
+{
+    background:#ffffff;
+    height:50px;
+    margin-top:0;
+}
+
+.navbar-brand
+{
+    margin:0;
+    padding-top:0px;
+    padding-bottom:0px;
+}
+
+#logo:hover
+{
+    background:#26e468;
+    transition: background 0.25s linear;
+}
+
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus
+{
+    color:white;
+    background:#232323;
+}
+
+.navbar-default .navbar-nav > li > a
+{
+    color:white;
+}
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus
+{
+    color:#26e468;
+    transition:color 0.25s linear;
+}
+
+.navbar-default
+{
+    background:#383838;
+}
+
+
+
