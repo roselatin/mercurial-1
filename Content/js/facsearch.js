@@ -73,4 +73,3 @@ function showerror(a)
     document.getElementById(a).setAttribute('src','images\\faculty\\default.jpg');
     document.getElementById(a).setAttribute('data-facid','default');
 }
-
