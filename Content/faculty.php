@@ -14,14 +14,14 @@
 
 </head>
 <body>
-<div class="wrapper">
+<div id="wrapper">
 
 <?php include("header.html"); ?>
 
 <!-- Button trigger modal -->
 <div id="content"  >
-<div class="container" style="width:100%;height:100%;">
-    <div id="fac_list">
+<div class="container " style="width:100%;height:100%;">
+    <div id="fac_list" class="text-center">
 </div>
 
 </div>

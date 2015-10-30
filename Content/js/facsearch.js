@@ -31,7 +31,7 @@ $(document).on("ready",function() {
             $("#faculty_preloader").remove();
             Profs = jQuery.parseJSON(data);
             $("#fac_list").append("<div id='fixed_search'  ><div class='fscontainer'><div class='col-lg-5' style='float:none;width:30%;display:table-cell' ><span style='color:white;'>Search Faculty</span></div><div class='col-lg-7' style='float:none;'><input  style='width:100%;' class='search' placeholder='Search'/> </div></div>");
-            $("#fac_list").append("<div style='position:relative;top:80px;height:100%;'><ul id='faculty' class='list list-inline'>");
+            $("#fac_list").append("<ul id='faculty' style='padding-top:90px;' class='list list-inline'>");
             for(var i=0;i<Profs.length;i++)
             {
 
@@ -43,7 +43,7 @@ $(document).on("ready",function() {
                 $("#faculty").append("<li  class='fac-item text-center'><div class='row' ><img  data-email='"+email+"' data-status='"+status+"'  data-rank='"+rank+"' data-name='"+name+"' class='img-circle prof ' data-facid='"+facid+"' id='"+facid+"' data-toggle='modal' data-target='#myModal'   src='images\\faculty\\"+ facid + ".jpg' onerror='showerror(this.id)' /> </div><div class='row'><p class='name'>"+name+"</p></div></li>");
 
             }
-            $("#fac_list").append("</div></ul>");
+            $("#fac_list").append("</ul>");
             var options = {
                 valueNames: [ 'name' ]
             };

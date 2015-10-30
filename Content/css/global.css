@@ -13,26 +13,19 @@ body {
     margin:0;
     padding:0;
     height:100%;
+    background:#232323;
 }
 #wrapper {
     min-height:100%;
     position:relative;
 }
 #header {
-    position:absolute;
-    top:0;
-    left:0;
     background:#232323;
+    padding:10px;
     height:50px;
 }
 #content {
     padding-bottom:50px; /* Height of the footer element */
-    position:absolute;
-    top:50px;
-    bottom:0;
-    width:100%;
-    overflow:auto;
-    background:#232323;
 }
 #footer {
     background:#383838;
@@ -41,7 +34,6 @@ body {
     position:absolute;
     bottom:0;
     left:0;
-    color:white;
 }
 
 

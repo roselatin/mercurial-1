@@ -11,21 +11,22 @@
     <link rel="stylesheet" href="css/bootstrap.css" />
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/faculty.css">
+    <link rel="stylesheet" href="css/jquery.dataTables.min.css">
 
 </head>
 <body>
 <div id="wrapper">
     <?php include("header.html");?>
     <div id="content">
-        <div class="container-fluid" style="padding-top:10px;">
+        <div class="container-fluid text-center" style="padding-top:10px;">
             <div class="input-group">
-                <input type="text" id="course_code" class="form-control" aria-label="...">
+                <input placeholder="Type A Course" type="text" id="course_code" class="form-control" aria-label="...">
                 <div class="input-group-btn">
-                    <button onclick="testone();" type="button" class="btn btn-default"><span class="glyphicon glyphicon-search"></span>&nbsp;Search Course</button>
+                    <button onclick="testone();" type="submit" id="search_btn" class="btn btn-default"><span class="glyphicon glyphicon-search"></span>&nbsp;Search Course</button>
                 </div>
             </div>
 
-            <div style="color:white;" class="datashit">
+            <div  class="datashit " style="padding-left:250px;padding-right:250px;">
 
             </div>
         </div>
@@ -34,6 +35,9 @@
 </div>
 </body>
 </html>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/jquery.dataTables.js"></script>
 <script type="text/javascript">
 
 
@@ -47,19 +51,22 @@
 
         beforeSend:function()
     {
+        $("#search_btn").addClass("disabled");
+        $("#search_btn").attr("onclick","");
         $(".datashit").empty();
-        $(".datashit").append("<div id='faculty_preloader' class='text-center'><h1>Searching...</h1><BR><div  class='loader'></div>");
+        $(".datashit").append("<div id='faculty_preloader' class='text-center'><h1>Searching Course Offerings</h1><BR><div  class='loader'></div>");
 
 
     },
             success: function (data) {
+                $("#search_btn").removeClass("disabled");
+                $("#search_btn").attr("onclick","testone();");
                 $("#faculty_preloader").remove();
-
 
                 var Schedules =    jQuery.parseJSON(data);
                 if(Schedules.length>0)
                 {
-                    $(".datashit").append( "<table class='table table-bordered table-responsive'>"+
+                    $(".datashit").append("<table  style='color:white;' class='text-left table table-bordered table-responsive'>"+
                         "<thead>"+
                         "<tr>"+
                         " <th>Code</th>"+
@@ -94,6 +101,8 @@
 
 
                     }
+                  //  $('.table').dataTable();
+
                 }
                 else
                 {
@@ -108,5 +117,4 @@
 
 
 </script>
-<script src="js/jquery.min.js"></script>
-<script src="js/bootstrap.js"></script>
+

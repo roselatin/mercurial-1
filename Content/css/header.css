@@ -2,8 +2,8 @@
 #logo
 {
     background:#ffffff;
-    height:50px;
     margin-top:0;
+    height:50px;
 }
 
 .navbar-brand
@@ -40,6 +40,12 @@
 .navbar-default
 {
     background:#383838;
+
+}
+
+.navbar , .navbar-default
+{
+    border:0px;
 }
 
 
