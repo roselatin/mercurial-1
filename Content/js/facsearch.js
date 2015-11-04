@@ -20,16 +20,17 @@ $(document).on("ready",function() {
     var Profs;
     $.ajax({
         type: "POST",
-        dataType: "json",
         url: "loadfac.php", //Relative or absolute path to response.php fill
+        dataType:"json",
         beforeSend: function(){
             document.getElementById("fac_list").innerHTML = "<div id='faculty_preloader' class='text-center'><h1>Loading Faculty</h1><BR><div  class='loader'></div>";
             // start = new Date().getTime();
         },
         success: function (data) {
-
+console.log(data);
             $("#faculty_preloader").remove();
             Profs = jQuery.parseJSON(data);
+console.log(Profs);
             $("#fac_list").append("<div id='fixed_search'  ><div class='fscontainer'><div class='col-lg-5' style='float:none;width:30%;display:table-cell' ><span style='color:white;'>Search Faculty</span></div><div class='col-lg-7' style='float:none;'><input  style='width:100%;' class='search' placeholder='Search'/> </div></div>");
             $("#fac_list").append("<ul id='faculty' style='padding-top:90px;' class='list list-inline'>");
             for(var i=0;i<Profs.length;i++)

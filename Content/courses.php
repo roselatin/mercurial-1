@@ -8,27 +8,29 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Testing</title>
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/bootstrap2.css" />
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/faculty.css">
-    <link rel="stylesheet" href="css/jquery.dataTables.min.css">
 
 </head>
 <body>
 <div id="wrapper">
     <?php include("header.html");?>
     <div id="content">
-        <div class="container-fluid text-center" style="padding-top:10px;">
-            <div class="input-group">
-                <input placeholder="Type A Course" type="text" id="course_code" class="form-control" aria-label="...">
+        <div class="container-fluid " style="padding-top:10px;">
+		<form  onsubmit="return false;" >
+            <div class="input-group" style="margin:auto;width:280px;">
+                <input maxlength="7" placeholder="e.g DBASESY" type="text" id="course_code" class="form-control" aria-label="...">
                 <div class="input-group-btn">
-                    <button onclick="testone();" type="submit" id="search_btn" class="btn btn-default"><span class="glyphicon glyphicon-search"></span>&nbsp;Search Course</button>
+                    <button onclick="testone();" type="submit" id="search_btn" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span>&nbsp;Search Course</button>
                 </div>
             </div>
-
-            <div  class="datashit " style="padding-left:250px;padding-right:250px;">
+</form>
+<center>
+            <div  class="datashit " style="margin:auto;padding-top:20px;">
 
             </div>
+			</center>
         </div>
     </div>
     <?php include("footer.html");?>
@@ -58,17 +60,37 @@
 
 
     },
+	 error: function(){
+		         alert("Please Try Again");
+
+    },
             success: function (data) {
-                $("#search_btn").removeClass("disabled");
+				                console.log(data);
+								$("#search_btn").removeClass("disabled");
                 $("#search_btn").attr("onclick","testone();");
                 $("#faculty_preloader").remove();
 
+
+				if(data=="1")
+				{
+               $(".datashit").append("<div id='faculty_preloader' class='text-center'><h1>MLS IS DOWN</h1><BR><span class='glyphicon glyphicon-remove' style='color:white;font-size:3em;'/></div>");
+
+				}
+					else	if(data=="1")
+				{
+					        alert("MLS IS NOT RESPONDING");
+
+				}
+				else
+				{
+
+				
                 var Schedules =    jQuery.parseJSON(data);
                 if(Schedules.length>0)
                 {
-                    $(".datashit").append("<table  style='color:white;' class='text-left table table-bordered table-responsive'>"+
+                    $(".datashit").append("<table  style='color:white;width:auto;' class='table table-condensed table-striped' >"+
                         "<thead>"+
-                        "<tr>"+
+                        "<tr class='success'>"+
                         " <th>Code</th>"+
                         " <th>Course</th>"+
                         " <th>Section</th>"+
@@ -85,16 +107,46 @@
 
                     for (var i=0;i<Schedules.length;i++)
                     {
-
-
-                        $("#schedbody").append("<tr class='schedrow'>"+
+						var isfull="",asroom;
+						var ratio = Schedules[i].enrld/Schedules[i].enrlcap || 0 ;
+					   if(ratio>=1)
+					   {
+						   isfull="danger";
+					   }
+					   else if(ratio>0.9)
+					   {
+						   isfull="warning";
+					   }
+					   var bldg = (Schedules[i].room).substring(0,2); 
+					   console.log(bldg);
+						  switch(bldg)
+						  {
+						  case "VL":
+						  asroom = "Velasco Building";
+						   break;
+						   case "AG":
+						   asroom = "Andrew Building";
+						   break;
+						   case "GK":
+						   asroom ="Gokongwei Building";
+						   break;
+						   case "MM":
+						   asroom ="Mutien Marie Building";
+						   break;
+						  default:
+						  asroom = "Unknown";
+						  
+					 }  
+					 
+					   
+                        $("#schedbody").append("<tr class='schedrow "+isfull+ 	"'>"+
                             "<td>"+Schedules[i].classnum+"</td>"+
                             "<td>"+Schedules[i].coursename+"</td>"+
                             "<td>"+Schedules[i].section+"</td>"+
                             "<td>"+Schedules[i].day+"</td>"+
                             "<td>"+Schedules[i].time+"</td>"+
-                            "<td>"+Schedules[i].room+"</td>"+
-                            "<td>"+ Schedules[i].enrld+"/"+Schedules[i].enrlcap+"</td>"+
+                            "<td >"+"<a   style='cursor:help;text-decoration:none;color:white;' data-toggle='tooltip' title='"+asroom+"'>"+Schedules[i].room+"</a></td>"+
+                            "<td >"+ Schedules[i].enrld+"/"+Schedules[i].enrlcap+"</td>"+
                             "<td>"+Schedules[i].remarks+"</td>"+
                             "</tr>");
 
@@ -108,7 +160,9 @@
                 {
                     $(".datashit").append( "NO COURSE OFFERINGS DAMN");
                 }
+				}
             }
+			
 
 
         });
