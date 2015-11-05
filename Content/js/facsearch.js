@@ -13,23 +13,26 @@
 
     });
 
+
 //Load the database on page load
 
 $(document).on("ready",function() {
     var Profs;
     $.ajax({
         type: "POST",
-        dataType: "json",
         url: "loadfac.php", //Relative or absolute path to response.php fill
+        dataType:"json",
         beforeSend: function(){
-            document.getElementById("fac_list").innerHTML = "<div id='faculty_preloader' class='text-center'><h1>LOADING FACULTY LIST</h1><BR><div  class='loader'></div>";
+            document.getElementById("fac_list").innerHTML = "<div id='faculty_preloader' class='text-center'><h1>Loading Faculty</h1><BR><div  class='loader'></div>";
             // start = new Date().getTime();
         },
         success: function (data) {
-            setTimeout(function(){
+console.log(data);
             $("#faculty_preloader").remove();
             Profs = jQuery.parseJSON(data);
-            $("#fac_list").append("<input class='search' placeholder='Search' /><ul id='faculty' class='list list-inline'>");
+console.log(Profs);
+            $("#fac_list").append("<div id='fixed_search'  ><div class='fscontainer'><div class='col-lg-5' style='float:none;width:30%;display:table-cell' ><span style='color:white;'>Search Faculty</span></div><div class='col-lg-7' style='float:none;'><input  style='width:100%;' class='search' placeholder='Search'/> </div></div>");
+            $("#fac_list").append("<ul id='faculty' style='padding-top:90px;' class='list list-inline'>");
             for(var i=0;i<Profs.length;i++)
             {
 
@@ -38,7 +41,7 @@ $(document).on("ready",function() {
                 var rank = Profs[i].Rank;
                 var status = Profs[i].Status;
                 var email = Profs[i].Email;
-                $("#faculty").append("<li  class='fac-item text-center'><img  data-email='"+email+"' data-status='"+status+"'  data-rank='"+rank+"' data-name='"+name+"' class='img-circle prof' data-facid='"+facid+"' id='"+facid+"' data-toggle='modal' data-target='#myModal'   src='images\\faculty\\"+ facid + ".jpg' onerror='showerror(this.id)' /> <br><span class='name'>"+name+"</span></li>");
+                $("#faculty").append("<li  class='fac-item text-center'><div class='row' ><img  data-email='"+email+"' data-status='"+status+"'  data-rank='"+rank+"' data-name='"+name+"' class='img-circle prof ' data-facid='"+facid+"' id='"+facid+"' data-toggle='modal' data-target='#myModal'   src='images\\faculty\\"+ facid + ".jpg' onerror='showerror(this.id)' /> </div><div class='row'><p class='name'>"+name+"</p></div></li>");
 
             }
             $("#fac_list").append("</ul>");
@@ -47,7 +50,7 @@ $(document).on("ready",function() {
             };
 
             var userList = new List('fac_list', options);
-            },  500);
+
             //   ShowProfs();
         }
     });
@@ -71,4 +74,3 @@ function showerror(a)
     document.getElementById(a).setAttribute('src','images\\faculty\\default.jpg');
     document.getElementById(a).setAttribute('data-facid','default');
 }
-

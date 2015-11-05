@@ -1,85 +1,50 @@
-<!Doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
-<link rel="stylesheet" href="css/home.css">
-<link rel="stylesheet" href="css/bootstrap.min.css">
-<link rel="stylesheet" href="css/theme.css">
-<link rel="stylesheet" href="css/global.css">
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="js/jquery.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="js/bootstrap.min.js"></script>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Testing</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/home.css">
 
+</head>
 <body>
-
+<div id="wrapper">
 <?php include("header.html");?>
+    <div id="content">
+        <div class="container-fluid" style="padding:15px;width:960px;margin:auto;">
 
-    <div class="col-md-7">
-        <div class="carousel slide" id="myCarousel">
-            <div class="carousel-inner">
-                <div class="item active">
-                    <div class="imgWrap">
-                        <div class="col-md-4">
-                            <a href="#"><img src="images/events/ARW_ECES.jpg" class="img-responsive"style="width:508px;height:475px"></a>
-                            <p class="imgDescription">ECES ARW 2015
-                                Annual Recruitment Week for ECES. Join ECES NOW!</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="col-md-4"><a href="#"><img src="images/events/GA_ACCESS.jpg" class="img-responsive"style="width:508px;height:475px"></a></div>
-                </div>
-                <div class="item">
-                    <div class="col-md-4"><a href="#"><img src="images/events/Utour.jpg" class="img-responsive"style="width:508px;height:475px"></a></div>
-                </div>
-                <div class="item">
-                    <div class="col-md-4"><a href="#"><img src="images/events/IECEP.jpg" class="img-responsive"style="width:508px;height:475px"></a></div>
-                </div>
-                <div class="item">
-                    <div class="col-md-4"><a href="#"><img src="images/events/PCB_seminar.jpg" class="img-responsive"style="width:508px;height:475px"></a></div>
-                </div>
-                <div class="item">
-                    <div class="col-md-4"><a href="#"><img src="images/events/DLSU_jobexpo.png" class="img-responsive"style="width:508px;height:475px"></a></div>
-                </div>
-                <div class="item">
-                    <div class="col-md-4"><a href="#"><img src="images/events/DOTA2_Tournament.jpg" class="img-responsive"style="width:508px;height:475px"></a></div>
-                </div>
-                <div class="item">
-                    <div class="col-md-4"><a href="#"><img src="images/events/Frosh_convocation.jpg" class="img-responsive"style="width:508px;height:475px"></a></div>
-                </div>
-            </div>
-            <a class="left carousel-control" href="#myCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
-            <a class="right carousel-control" href="#myCarousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
+    <div id="carousel" class="carousel slide carousel-fade" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carousel" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel" data-slide-to="1"></li>
+            <li data-target="#carousel" data-slide-to="2"></li>
+        </ol>
+        <!-- Carousel items -->
+        <div class="carousel-inner">
+            <div class="active item"><img class="img-responsive" src="images/carousel/test.png"></div>
+            <div class="item"><img class="img-responsive" src="images/carousel/test2.png"></div>
+            <div class="item"><img class="img-responsive" src="images/carousel/test.png"></div>
         </div>
-    </div>
-
-
-    <!-- Left and right controls -->
-
-<script type="text/javascript">
-    $('#myCarousel').carousel({
-        interval: 10000
-    })
-
-    $('.carousel .item').each(function(){
-        var next = $(this).next();
-        if (!next.length) {
-            next = $(this).siblings(':first');
-        }
-        next.children(':first-child').clone().appendTo($(this));
-
-        if (next.next().length>0) {
-            next.next().children(':first-child').clone().appendTo($(this));
-        }
-        else {
-            $(this).siblings(':first').children(':first-child').clone().appendTo($(this));
-        }
-    });
-</script>
-
+        <!-- Carousel nav -->
+        <a class="carousel-control left" href="#carousel" data-slide="prev"><span class="glyphicon glyphicon-circle-arrow-left"></span></a>
+        <a class="carousel-control right" href="#carousel" data-slide="next"><span class="glyphicon glyphicon-circle-arrow-right"></span></a>
+    </div
+            <div class="text-left" >
+                <H1 style="color:white;"> Welcome to the ECE Department</H1></div> </div></div>
 <?php include("footer.html");?>
+
+</div>
 </body>
-
-
-
 </html>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script type="text/javascript">
+    $('.carousel').carousel();
+</script>
