@@ -80,7 +80,7 @@ $size = sizeof($newarray);
 
 	if ($size==9 ) //check if course number 
 	{
-		if (preg_match ("#[0-9]#",$value ) ) //check if date 
+		if (preg_match ("#[0-9]#",$value ) ) //check if class numbr 
 		{
 		
 		$newsched = new Schedule(
@@ -98,7 +98,7 @@ $size = sizeof($newarray);
 		//echo "Row Contains Complete Sched Details " . $newsched -> classnum;
 		//echo sizeof($schedlist);
 		}
-		else 
+		else  //check if  new date
 		{
 			
 			$updatedsched = array_pop($schedlist);
@@ -122,10 +122,13 @@ $size = sizeof($newarray);
 		
 		$updatedsched = array_pop($schedlist);
 		$oldval = $updatedsched -> remarks ;
-		if(strlen($oldval)>0)
+		if(strlen($oldval)>0 && $oldval!="FRESHMAN BLOCK")
 		{
 	   $updatedsched ->remarks = $oldval . $newarray[0] ."".$newarray[1];
-
+}
+   else   if($oldval=="FRESHMAN BLOCK")
+{
+		   $updatedsched ->remarks = $oldval ."<br>". $newarray[0] ." ".$newarray[1];
 }
 else
 {

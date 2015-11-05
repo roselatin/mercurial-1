@@ -65,15 +65,15 @@
 
     },
             success: function (data) {
-				                console.log(data);
-								$("#search_btn").removeClass("disabled");
+				console.log(data);
+				$("#search_btn").removeClass("disabled");
                 $("#search_btn").attr("onclick","testone();");
                 $("#faculty_preloader").remove();
 
 
 				if(data=="1")
 				{
-               $(".datashit").append("<div id='faculty_preloader' class='text-center'><h1>MLS IS DOWN</h1><BR><span class='glyphicon glyphicon-remove' style='color:white;font-size:3em;'/></div>");
+               $(".datashit").append("<div id='faculty_preloader' class='text-center'><h1>Network Error</h1><BR><span class='glyphicon glyphicon-remove' style='color:white;font-size:3em;'/></div>");
 
 				}
 					else	if(data=="1")
@@ -136,8 +136,8 @@
 						  default:
 						  asroom = "Unknown";
 						  
-					 }  
-					 
+					 }
+
 					   
                         $("#schedbody").append("<tr class='schedrow "+isfull+ 	"'>"+
                             "<td>"+Schedules[i].classnum+"</td>"+
@@ -145,7 +145,7 @@
                             "<td>"+Schedules[i].section+"</td>"+
                             "<td>"+Schedules[i].day+"</td>"+
                             "<td>"+Schedules[i].time+"</td>"+
-                            "<td >"+"<a   style='cursor:help;text-decoration:none;color:white;' data-toggle='tooltip' title='"+asroom+"'>"+Schedules[i].room+"</a></td>"+
+                            "<td >"+"<a style='cursor:help;text-decoration:none;color:white;' data-toggle='tooltip' title='"+asroom+"'>"+Schedules[i].room+"</a></td>"+
                             "<td >"+ Schedules[i].enrld+"/"+Schedules[i].enrlcap+"</td>"+
                             "<td>"+Schedules[i].remarks+"</td>"+
                             "</tr>");
@@ -153,7 +153,7 @@
 
 
                     }
-                  //  $('.table').dataTable();
+                  $('.table').dataTable();
 
                 }
                 else
