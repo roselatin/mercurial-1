@@ -32,6 +32,7 @@
 
         </div><!-- /container -->
     </div>
+    <?php include("modal_event.html"); ?>
     <?php include("footer.html");?>
 </div>
 </body>
@@ -50,12 +51,24 @@
 
         var a = ["accessga", "animobiz", "arwaccess", "daam", "dlsujobexpo", "dota2tourney", "froshconvo", "iecep", "paleetan", "pcbseminar", "scholarship", "utour"];
         for (var i = 0; i < a.length; i++) {
-            $("#grid").append("<li><a href='#'><img src='images/carousel/events/" + a[i] + ".jpg' alt='" + a[i] + "'><h3>" + a[i] + "</h3></a></li>");
+            $("#grid").append("<li><a class='event' data-url='"+a[i]+"' data-img='" +a[i]+ "' data-name='" +a[i]+ "' data-toggle='modal' data-target='#myModal' href='#'><img src='images/carousel/events/" + a[i] + ".jpg' alt='" + a[i] + "'><h3>" + a[i] + "</h3></a></li>");
         }
         new GridScrollFx( document.getElementById( 'grid' ), {
             viewportFactor : 0.4
         } );
     } );
+
+
+
+    $(document).on("click",".event", function()
+    {
+
+        var eventid = "images/carousel/events/"+$(this).data('img')+".jpg";
+        document.getElementById("eventname").innerText = $(this).data('name');
+        document.getElementById("eventimg").setAttribute("src",eventid);
+        document.getElementById("eventurl").setAttribute("href", "http://facebook.com/"+$(this).data('url'));
+    });
+
 
 
 
