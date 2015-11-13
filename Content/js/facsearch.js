@@ -27,10 +27,9 @@ $(document).on("ready",function() {
             // start = new Date().getTime();
         },
         success: function (data) {
-console.log(data);
+            document.getElementById("faclnk").setAttribute("style","background:#000000")
             $("#faculty_preloader").remove();
             Profs = jQuery.parseJSON(data);
-console.log(Profs);
             $("#fac_list").append("<div id='fixed_search'  ><div class='fscontainer'><div class='col-lg-5' style='float:none;width:30%;display:table-cell' ><span style='color:white;'>Search Faculty</span></div><div class='col-lg-7' style='float:none;'><input  style='width:100%;' class='search' placeholder='Search'/> </div></div>");
             $("#fac_list").append("<ul id='faculty' style='padding-top:90px;' class='list list-inline'>");
             for(var i=0;i<Profs.length;i++)

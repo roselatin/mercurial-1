@@ -24,7 +24,7 @@
             <section class="grid-wrap">
                 <ul class="grid swipe-down" id="grid">
                     <li class="title-box">
-                        <h2>Events held by the <a href="http://ryotakemasa.com/">ECE Department</a></h2>
+                        <h2>Events held by the <a href="#">ECE Department</a></h2>
                     </li>
 
                 </ul>
