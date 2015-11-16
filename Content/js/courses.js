@@ -1,6 +1,26 @@
 var jqXHR;
 
+var substringMatcher = function(strs) {
+    return function findMatches(q, cb) {
+        var matches, substringRegex;
 
+        // an array that will be populated with substring matches
+        matches = [];
+
+        // regex used to determine if a string contains the substring `q`
+        substrRegex = new RegExp(q, 'i');
+
+        // iterate through the pool of strings and for any string that
+        // contains the substring `q`, add it to the `matches` array
+        $.each(strs, function(i, str) {
+            if (substrRegex.test(str)) {
+                matches.push(str);
+            }
+        });
+
+        cb(matches);
+    };
+};
 
 $(document).ready(function()
 {
@@ -16,24 +36,31 @@ $(document).ready(function()
             $("#listdiv").append("<div id='faculty_preloader' class='text-center'><h1>Loading Courses</h1><BR><div  class='loader'></div>");
         },
         success: function (data) {
-
+console.log(data);
+            var asd =[];
             var clist = jQuery.parseJSON(data);
             $("#faculty_preloader").remove();
-            $("#courselist ").append("<input maxlength='7' placeholder='e.g DBASESY'  class='search' type='text' />");
-            $("#courselist ").append("<div id='courses' style='' class='list list-group '>");
+            $("#asd").append("<input maxlength='7' placeholder='e.g DBASESY'  class='typeahead form-control' type='text' />");
 
             for(var i=0;i<clist.length;i++)
             {
-                $("#courses").append("<a style='width:auto;' href='#' class='list-group-item  '><p class='coursename'>"+clist[i].Course+"</p></a>");
+                asd.push(clist[i].course);
 
             }
             $("#course").append("</div>");
 
-            var options = {
-                valueNames: [ 'coursename' ]
-            };
+            $('.typeahead').typeahead({
+                    hint: true,
+                    minLength: 1
+                },
 
-            var userList = new List('courselist', options);
+                {
+
+                    name: 'asd',
+                    source: substringMatcher(asd)
+                }
+            ).bind('typeahead:selected', function(ev, suggestion) {
+wee(suggestion);                });
 
         },
         complete: function()
@@ -51,7 +78,8 @@ $(document).ready(function()
 
 
 
-$(document).on("click",".list-group-item",function(event){
+function wee(a)
+{
     if(jqXHR!=null)
     {
         var cancel = confirm("This will cancel the current course search, continue?");
@@ -60,15 +88,15 @@ $(document).on("click",".list-group-item",function(event){
     jqXHR.abort();
 
         $("#faculty_preloader").remove();
-            $(".datashit").append("Click to view Course Offerings for <button onclick='testone(event);' class='btn btn-primary'>"+ $(event.target)[0].innerText+"</button>");
+            $(".datashit").append("Click to view Course Offerings for <button onclick='testone(event);' class='btn btn-primary'>"+ a+"</button>");
 
         }
     }
     else
     {
-        $(".datashit").empty().append("Click to view Course Offerings for <button onclick='testone(event);' class='btn btn-primary'>"+ $(event.target)[0].innerText+"</button>");
+        $(".datashit").empty().append("Click to view Course Offerings for <button onclick='testone(event);' class='btn btn-primary'>"+ a+"</button>");
     }
-});
+}
 
 function testone(event)
 {

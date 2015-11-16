@@ -176,7 +176,7 @@ function loadinitiallist()
 	$selectdb = mysql_select_db('lbycp3b',$sqlConnect);
 	$json_data = array(); // create a new array
 
-	$result_out=mysql_query("SELECT Course FROM courses",$sqlConnect);
+	$result_out=mysql_query("SELECT * FROM course_list",$sqlConnect);
 	while($rw=mysql_fetch_assoc($result_out)) {
 		array_push($json_data, $rw);
 
