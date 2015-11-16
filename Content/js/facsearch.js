@@ -30,7 +30,14 @@ $(document).on("ready",function() {
             document.getElementById("faclnk").setAttribute("style","background:#000000")
             $("#faculty_preloader").remove();
             Profs = jQuery.parseJSON(data);
-            $("#fac_list").append("<div id='fixed_search'  ><div class='fscontainer'><div class='col-lg-5' style='float:none;width:30%;display:table-cell' ><span style='color:white;'>Search Faculty</span></div><div class='col-lg-7' style='float:none;'><input  style='width:100%;' class='search' placeholder='Search'/> </div></div>");
+            $("#fac_list").append("<div id='fixed_search'  >"+
+                "<div id='search'>"+
+
+            "<form>"+
+            "<input  class='search' type='search' value='' placeholder='type keyword(s) here' />"+
+
+                "</form>"+
+                "</div></div>");
             $("#fac_list").append("<ul id='faculty' style='padding-top:90px;' class='list list-inline'>");
             for(var i=0;i<Profs.length;i++)
             {

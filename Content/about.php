@@ -3,7 +3,7 @@
 
 <link rel="stylesheet" href="css/reset.css">
 <link rel="stylesheet" href="css/bootstrap.css" />
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/about.css">
 <link rel="stylesheet" href="css/global.css">
 
 <link rel="stylesheet" href="css/icons.css">
