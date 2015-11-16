@@ -1,0 +1,12 @@
+@media (max-width: 980px) {
+    .modal-content { max-width: 400px; margin-left: auto;
+        margin-right: auto}
+    #eventimg{ display:none; }
+}
+.col-md-12 {
+    text-align: center;
+
+}
+.modal-header{
+    text-align: center;
+}

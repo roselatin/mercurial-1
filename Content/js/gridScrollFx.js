@@ -89,14 +89,12 @@
 		if( !this.image ) return;
 		this.curtain = document.createElement( 'div' );
 		this.curtain.className = 'curtain';
-		var rgb = new ColorFinder( function favorHue(r,g,b) {
-			// exclude white
-			//if (r>245 && g>245 && b>245) return 0;
-			return (Math.abs(r-g)*Math.abs(r-g) + Math.abs(r-b)*Math.abs(r-b) + Math.abs(g-b)*Math.abs(g-b))/65535*50+1;
-		} ).getMostProminentColor( this.image );
-		if( rgb.r && rgb.g && rgb.b ) {
-			this.curtain.style.background = 'rgb('+rgb.r+','+rgb.g+','+rgb.b+')';
-		}
+		var red = [0,7,25,15,21,0,5,11,1,0];
+		var green = [157,82,166,41,89,30,20,66,2,3];
+		var blue = [87,32,3,37,2,186,125,255,64,199];
+		var int = Math.floor(Math.random() * (9 - 0 + 1));
+			this.curtain.style.background = 'rgb('+red[int]+','+green[int]+','+blue[int]+')';
+
 		this.anchor.appendChild( this.curtain );
 	}
 

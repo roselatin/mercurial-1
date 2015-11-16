@@ -1,16 +1,4 @@
 <?php
-if (is_ajax()) {
-
-    test_function();
-
-}
-
-function is_ajax() {
-    return isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest';
-}
-
-
-function test_function(){
 
     $sqlConnect = mysql_connect('localhost','root','');
 
@@ -28,4 +16,4 @@ function test_function(){
     $json_data = json_encode($json_data);
 
     echo json_encode($json_data);
-}
+
