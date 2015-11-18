@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="css/bootstrap.css" />
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/faculty.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
 
 </head>
 <body>

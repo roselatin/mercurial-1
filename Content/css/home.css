@@ -40,7 +40,7 @@ body,
 .navbar-default .navbar-nav > li > a
 {
     color:white;
-    font-size:24px;
+    font-size:1.2em;
 }
 .carousel
 {
@@ -171,7 +171,20 @@ Main components
     border-top: 1px solid #453c3d;
     color: #ffffff;
 }
+
+@media only screen and (max-width:940px)
+{
+.navbar-brand
+{
+    display:none;
+}
+}
+
+
 @media only screen and (min-width: 768px) {
+
+
+
     .cd-main-nav {
         width: auto;
         height: auto;
@@ -252,7 +265,7 @@ Main components
     color: white;
 }
 .cd-fixed-bg.cd-bg-1 {
-    background-image: url("../images/headerbg.jpg");
+    background-image: url("../images/UI/homebanner.jpg");
 }
 .cd-fixed-bg.cd-bg-2 {
     background-image: url("../images/headerbg.jpg");
@@ -306,6 +319,7 @@ Main components
         line-height: 2;
         font-weight: 300;
     }
+
 }
 
 
@@ -320,4 +334,89 @@ Main components
 .stylish-input-group button{
     border:0;
     background:transparent;
+}
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus
+{
+   color:#26e468;
+}
+
+.navbar-brand
+{
+    padding-left:60px;
+    padding-right:0px;
+}
+
+#homlnk
+{
+    color: #26e468;
+    background:seagreen;
+    border-radius:10px;
+}
+
+#homlnk >a:hover
+{
+color:white;
+}
+
+#homelogo :hover
+{
+    -webkit-box-shadow: 0px 0px 49px 6px rgba(86,214,79,0.68);
+    -moz-box-shadow: 0px 0px 49px 6px rgba(86,214,79,0.68);
+    box-shadow: 0px 0px 49px 6px rgba(86,214,79,0.68);
+}
+
+
+
+.btn-primary {
+    color: #FFFFFF;
+    background-color: #35A157;
+    border-color: #35a157;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.open .dropdown-toggle.btn-primary {
+    color: #FFFFFF;
+    background-color: #14A826;
+    border-color: #35a157;
+}
+
+.btn-primary:active,
+.btn-primary.active,
+.open .dropdown-toggle.btn-primary {
+    background-image: none;
+}
+
+.btn-primary.disabled,
+.btn-primary[disabled],
+fieldset[disabled] .btn-primary,
+.btn-primary.disabled:hover,
+.btn-primary[disabled]:hover,
+fieldset[disabled] .btn-primary:hover,
+.btn-primary.disabled:focus,
+.btn-primary[disabled]:focus,
+fieldset[disabled] .btn-primary:focus,
+.btn-primary.disabled:active,
+.btn-primary[disabled]:active,
+fieldset[disabled] .btn-primary:active,
+.btn-primary.disabled.active,
+.btn-primary[disabled].active,
+fieldset[disabled] .btn-primary.active {
+    background-color: #35A157;
+    border-color: #35a157;
+}
+
+.btn-primary .badge {
+    color: #35A157;
+    background-color: #FFFFFF;
+}
+
+.btn-primary:active:hover, .btn-primary.active:hover, .open > .dropdown-toggle.btn-primary:hover, .btn-primary:active:focus, .btn-primary.active:focus, .open > .dropdown-toggle.btn-primary:focus, .btn-primary:active.focus, .btn-primary.active.focus, .open > .dropdown-toggle.btn-primary.focus
+{
+    background-color: #14A826;
+    color: #FFFFFF;
+    border-color:#14A826;
 }

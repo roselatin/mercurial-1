@@ -8,8 +8,10 @@
         var facid = "images/faculty/"+$(this).data('facid')+".jpg";
         document.getElementById("displayname").innerText = $(this).data('name');
         document.getElementById("displayrank").innerText= $(this).data('rank');
+        document.getElementById("displaystatus").innerText= $(this).data('status');
+
         document.getElementById("fac_pic").setAttribute("src",facid)
-        document.getElementById("fac_email").setAttribute("title",$(this).data('email'));
+        document.getElementById("facemail").innerText=$(this).data('email');
 
     });
 
@@ -23,18 +25,18 @@ $(document).on("ready",function() {
         url: "loadfac.php", //Relative or absolute path to response.php fill
         dataType:"json",
         beforeSend: function(){
-            document.getElementById("fac_list").innerHTML = "<div id='faculty_preloader' class='text-center'><h1>Loading Faculty</h1><BR><div  class='loader'></div>";
+            document.getElementById("fac_list").innerHTML = "<div id='faculty_preloader' class='text-center'><h1>Loading Faculty</h1><i style='font-size:120px;color:white;' class='fa fa-circle-o-notch fa-spin'></i> </div>";
             // start = new Date().getTime();
         },
         success: function (data) {
-            document.getElementById("faclnk").setAttribute("style","background:#000000")
+            document.getElementById("faclnk").setAttribute("style","background:#0000000")
             $("#faculty_preloader").remove();
             Profs = jQuery.parseJSON(data);
             $("#fac_list").append("<div id='fixed_search'  >"+
                 "<div id='search'>"+
 
             "<form>"+
-            "<input  class='search' type='search' value='' placeholder='type keyword(s) here' />"+
+            "<span style='color:white'>Search ECE Faculty</span>s&nbsp;<input style='width:50%;'  class='search' type='search' value='' placeholder='Type name of faculty' />"+
 
                 "</form>"+
                 "</div></div>");
@@ -56,6 +58,7 @@ $(document).on("ready",function() {
             };
 
             var userList = new List('fac_list', options);
+            $("#footer").show();
 
             //   ShowProfs();
         }

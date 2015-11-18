@@ -1,7 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="stylesheet" href="css/facmodal.css">
+<style>
+    .close
+    {
+        color:white;
+    }
+
+
+    *.focus
+    {
+        outline-style:none;
+        border-color: inherit;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+    textarea:focus, input:focus {
+        outline-style: none;
+        border-color: inherit;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+
+
+    .modal-content
+    {
+        background:#232323;
+    }
+
+
+</style>
 </head>
 <!-- Modal -->
 <div class="modal fade" style="height:600px;width:auto;" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -21,27 +49,22 @@
                     <div class="row text-center">
                         <h3 id="displayname">Name</h3>
                     </div>
-                    <div class="row text-center spec " >
-                        <h3 class="label label-spec">Specialization 1</h3>&nbsp;<a class="label label-spec">Specialization 2</a>
-                    </div>
-                    <table style="width:100%;">
-                        <tr><td><h3 class="spec-info">Status:</h3></td><td><h3 id="displaystatus">Full Time</h3></td></tr>
-                        <tr><td><h3 class="spec-info">Rank:</h3></td><td><h3 id="displayrank" >Assistant</h3></td></tr>
-                    </table>
 
-                    <div class="row">
-                        <div class="col-lg-4">
-                            </div><div class="col-lg-8"></div>
-                    </div>
                     <div class="row text-center" style="">
-                        <span id="fac_email" data-toggle="tooltip" data-placement="right" title="" class="glyphicon glyphicon-envelope"  style=""></span>
-                    </div>
+                        <dl style="font-size:20px;" class='dl-horizontal'>
+                            <dt>Status</dt>
+                            <dd id="displaystatus">Email</dd>
+                            <dt >Rank</dt>
+                            <dd id="displayrank">Email</dd>
+                        <dt><i class="fa fa-envelope"></i></dt>
+                        <dd id="facemail">Email</dd>
 
+                      </dl>
                 </div>
             </div>
 
         </div>
     </div>
 </div>
-
+</div>
 </html>

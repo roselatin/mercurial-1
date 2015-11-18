@@ -8,8 +8,11 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Testing</title>
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="css/bootstrap2.css" />
+    <link rel="stylesheet" href="css/bootstrap.css" />
     <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/jquery.dataTables.min.css"/>
+    <link rel="stylesheet" href="css/font-awesome.min.css"/>
+
     <link rel="stylesheet" href="css/courses.css">
 
 </head>
@@ -58,18 +61,35 @@
 <body>
 <div id="wrapper">
     <?php include("header.html");?>
-    <div id="content">
-        <div style="display:table-row;">
-            <div style="float:none;width:20%;display:table-cell;">
+    <div  id="content" style="">
 
-                <div id='asd' style='width:320px;' >
-                </div>
+        <div class="container" style="padding-top:20px;padding-bottom:212px;">
+            <div id="asd" class="col-lg-2" >
+
 
             </div>
-            <div style="float:none;width:80%;display:table-cell;">
-                <div  class="datashit " style="padding:20px;">
+            <div class="col-lg-10" style="">
+                <div  class="row datashit text-center" style="color:white;">
+                    <table id='coursedb'  style='width:100%;' class='display text-left' >
+                        <thead>
+                        <tr class='default'>
+                            <th>Code</th>
+                            <th>Title</th>
+                            <th>Units</th>
+                            <th>Prerequisites</th>
+                            <th>Category</th>
+                        </tr>
+                        </thead>
+                        <tbody style="color:black;" id='schedbod2y'>
+                        </tbody>
+                    </table>
 
                 </div>
+                <div>
+                    <div  class="row datashit2 text-center" style="color:white;">
+                    </div>
+            </div>
+
             </div>
         </div>
         </div>

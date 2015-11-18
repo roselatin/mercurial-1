@@ -1,4 +1,5 @@
 var jqXHR;
+var coursedb;
 
 var substringMatcher = function(strs) {
     return function findMatches(q, cb) {
@@ -22,7 +23,99 @@ var substringMatcher = function(strs) {
     };
 };
 
-$(document).ready(function()
+
+function browsecourse() {
+    $("#coursedata").remove();
+$("#coursedb_wrapper").show();
+    $("#search_btn").remove();
+
+    $(".datashit2").empty();
+}
+
+function initializecoursedb(clist){
+    for (var i = 0; i < clist.length; i++) {
+        var prerequisites = (clist[i].prereq).split(",");
+        var prereqs="";
+        $.each(prerequisites,function(index,course)
+        {
+            var temp=course.substring(7,8);
+            console.log(temp);
+
+            if(temp=="H")
+            {
+                prereqs+="<span  data-toggle='tooltip' title='Hard Prerequisite' class='label pr label-danger'>"+course.substring(0,7)+"</span>&nbsp";
+            }
+            else if(temp=="S")
+            {
+                prereqs+="<span  data-toggle='tooltip' title='Soft Prerequisite' class='label pr label-primary'>"+course.substring(0,7)+"</span>&nbsp";
+            }
+            else if(temp=="C")
+            {
+                prereqs+="<span  data-toggle='tooltip' title='Co-Requisite' class='label pr label-warning'>"+course.substring(0,7)+"</span>&nbsp";
+            }
+
+        });
+        coursedb+=   "<tr class='schedrow'> " +
+            "<td>" + clist[i].course + "</td>" +
+            "<td>" + clist[i].title + "</td>" +
+            "<td>" + clist[i].units + "</td>" +
+            "<td>" + prereqs + "</td>" +
+            "<td>" + clist[i].category + "</td>" +
+
+            "</tr>";
+    }
+}
+
+
+
+function loaddesc(event)
+{
+   $.ajax({
+        type: "POST",
+        data: "action=LOAD&course="+$(event.target).data("course"),
+        url: "requester.php", //Relative or absolute path to response.php fill
+
+        beforeSend:function()
+        {
+
+$("#cdesc").empty().append("<i class='fa fa-refresh fa-spin'></i>");
+        },
+        error: function(event){
+            if(event.statusText=="abort")
+            {
+                $("#faculty_preloader").remove();
+                jqXHR=null;
+            }
+            else
+            {
+                alert("Please Try Again");
+            }
+        },
+        success: function (data) {
+            console.log(data);
+            if(data.length<2)
+            {
+                alert("Error");
+
+               $("#cdesc").empty().append("<button class='btn btn-sm btn-primary' data-course='"+$(event.target).data("course")+"'  onclick='loaddesc(event)'>Load Description</button>");
+            }
+            else
+            {
+            $("#cdesc").empty().append(data);
+            }
+
+        }
+
+
+
+    });
+}
+
+
+
+
+
+    $(document).ready(function()
 {
 
 
@@ -33,36 +126,92 @@ $(document).ready(function()
         data:"action=INITIALIZE",
         beforeSend: function(){
 
-            $("#listdiv").append("<div id='faculty_preloader' class='text-center'><h1>Loading Courses</h1><BR><div  class='loader'></div>");
+            $("#content").append("<div id='faculty_preloader' class='text-center'><h1>Loading Courses</h1><BR><div  class='loader'><i style='font-size:120px;color:white;' class='fa fa-circle-o-notch fa-spin'></div>");
         },
         success: function (data) {
-console.log(data);
             var asd =[];
             var clist = jQuery.parseJSON(data);
             $("#faculty_preloader").remove();
-            $("#asd").append("<input maxlength='7' placeholder='e.g DBASESY'  class='typeahead form-control' type='text' />");
-
-            for(var i=0;i<clist.length;i++)
-            {
-                asd.push(clist[i].course);
-
-            }
-            $("#course").append("</div>");
-
-            $('.typeahead').typeahead({
-                    hint: true,
-                    minLength: 1
-                },
+            initializecoursedb(clist);
+            $("#schedbod2y").append(coursedb);
+            $("table").DataTable(
 
                 {
-
-                    name: 'asd',
-                    source: substringMatcher(asd)
+                    "pagingType": "full_numbers",
+                    "columnDefs": [
+                        {
+                            "targets": [ 4 ],
+                            "visible": false,
+                            "searchable": true
+                        }]
                 }
-            ).bind('typeahead:selected', function(ev, suggestion) {
-wee(suggestion);                });
+            );
+            $("#asd").append("<label class='label'>Display Course Data</label><br>"+
+                "<input maxlength='7' placeholder='e.g DBASESY'   class='typeahead form-control' type='text' /><br><button onclick='browsecourse()' class='btn btn-primary'>Browse</button>");
+$("#footer").show();
+            var stocks = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('course'),
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                local: clist
+            });
 
-        },
+            stocks.initialize();
+
+            $('.typeahead').typeahead(
+                null, {
+                    name: 'courses',
+                    displayKey: 'course',
+                    limit: 20,
+                    source: stocks.ttAdapter()
+                }).on('typeahead:selected', function(event, data){
+                    $("#coursedb_wrapper").hide();
+                    var prerequisites = (data.prereq).split(",");
+                    var prereqs="";
+                    $.each(prerequisites,function(index,course)
+                    {
+                        var temp=course.substring(7,8);
+                        console.log(temp);
+
+                        if(temp=="H")
+                        {
+                        prereqs+="<span  data-toggle='tooltip' title='Hard Prerequisite' class='label pr label-danger'>"+course.substring(0,7)+"</span>&nbsp";
+                        }
+                        else if(temp=="S")
+                        {
+                            prereqs+="<span  data-toggle='tooltip' title='Soft Prerequisite' class='label pr label-primary'>"+course.substring(0,7)+"</span>&nbsp";
+                        }
+                        else if(temp=="C")
+                        {
+                            prereqs+="<span  data-toggle='tooltip' title='Co-Requisite' class='label pr label-warning'>"+course.substring(0,7)+"</span>&nbsp";
+                        }
+
+                    });
+                    if(document.getElementById('coursedata')!=null)
+                    {
+                     $("#coursedata").remove();
+                        $("#search_btn").remove();
+                    }
+                    $(".datashit").append("<dl id='coursedata' class='dl-horizontal'>"+
+                        "<dt>Course Name</dt>"+
+                        "<dd>"+data.course+"</dd>"+
+                        "<dt>Course Title</dt>"+
+                        "<dd>"+data.title+"</dd>"+
+                        "<dt>Units</dt>"+
+                        "<dd>"+data.units+"</dd>"+
+                        "<dt>Course Description</dt>"+
+                        "<dd id='cdesc'><button class='btn btn-sm btn-primary' data-course='"+data.course+"'  onclick='loaddesc(event)'>Load Description</button></dd>"+
+                        "<dt>Prerequisites</dt>"+
+                        "<dd>"+prereqs+"</dd>"+
+                        "<dt>Category</dt>"+
+                    "<dd>"+data.category+"</dd>"+
+                        "</dl>"+
+                        "<button id='search_btn' onclick='testone(event);'  data-course='"+data.course+"' class='btn btn-primary'>Click to view Course Offerings for "+ data.course+"</button>");
+
+                    //$('.typeahead').val(data.code);
+                });
+
+$(".datashit").append("");
+        }    ,
         complete: function()
         {
         }
@@ -73,44 +222,24 @@ wee(suggestion);                });
 
 
 
+
 });
 
 
 
-
-function wee(a)
-{
-    if(jqXHR!=null)
-    {
-        var cancel = confirm("This will cancel the current course search, continue?");
-        if(cancel)
-        {
-    jqXHR.abort();
-
-        $("#faculty_preloader").remove();
-            $(".datashit").append("Click to view Course Offerings for <button onclick='testone(event);' class='btn btn-primary'>"+ a+"</button>");
-
-        }
-    }
-    else
-    {
-        $(".datashit").empty().append("Click to view Course Offerings for <button onclick='testone(event);' class='btn btn-primary'>"+ a+"</button>");
-    }
-}
-
 function testone(event)
 {
+
     jqXHR =  $.ajax({
         type: "POST",
-        data: "action=SEARCH&course="+$(event.target)[0].innerText,
+        data: "action=SEARCH&course="+$(event.target).data("course"),
         url: "requester.php", //Relative or absolute path to response.php fill
 
         beforeSend:function()
         {
-            $("#search_btn").addClass("disabled");
-            $("#search_btn").attr("onclick","");
-            $(".datashit").empty();
-            $(".datashit").append("<div style='margin:0;' id='faculty_preloader' class='text-center'><p>Searching Course Offerings</p><BR><div  class='loader'></div>");
+            $("#search_btn").hide();
+            $(".datashit2").empty();
+            $(".datashit2").append("<div style='margin:0;' id='faculty_preloader'  class='text-center'><p>Searching Course Offerings</p><i style='font-size:120px;color:white;' class='fa fa-circle-o-notch fa-spin'></i></div>");
 
 
         },
@@ -134,7 +263,8 @@ else
 
             if(data=="1")
             {
-                $(".datashit").append("<div id='faculty_preloader' class='text-center'><h1>Network Error</h1><BR><span class='glyphicon glyphicon-remove' style='color:white;font-size:3em;'/></div>");
+                $(".datashit2").append("<div id='faculty_preloader' class='text-center'><h1>Network Error</h1><BR><button id='search_btn' onclick='testone(event);' data-course='"+ $(event.target).data('course')+"' class='btn btn-primary'>Try Again</button></div>");
+
 
             }
             else	if(data=="1")
@@ -149,7 +279,7 @@ else
                 var Schedules =    jQuery.parseJSON(data);
                 if(Schedules.length>0)
                 {
-                    $(".datashit").append("<table  style='color:white;width:100%;' class='table table-condensed table-striped' >"+
+                    $(".datashit2").append("<table id='schedtable'  style='color:white;width:100%;' class='display text-left' >"+
                         "<thead>"+
                         "<tr class='success'>"+
                         " <th>Code</th>"+
@@ -162,7 +292,7 @@ else
                         " <th>Remarks</th>"+
                         "  </tr>"+
                         " </thead>"+
-                        " <tbody id='schedbody'>"+
+                        " <tbody style='color:black;' id='schedbody'>"+
                         " </tbody>"+
                         " </table>");
 
@@ -194,6 +324,10 @@ else
                             case "MM":
                                 asroom ="Mutien Marie Building";
                                 break;
+                            case "SJ":
+                                asroom="Saint Joseph Building";
+                            case "LS":
+                                asroom="Saint La Salle Hall";
                             default:
                                 asroom = "Unknown";
 
@@ -206,22 +340,30 @@ else
                             "<td>"+Schedules[i].section+"</td>"+
                             "<td>"+Schedules[i].day+"</td>"+
                             "<td>"+Schedules[i].time+"</td>"+
-                            "<td >"+"<a style='cursor:help;text-decoration:none;color:white;' data-toggle='tooltip' title='"+asroom+"'>"+Schedules[i].room+"</a></td>"+
+                            "<td >"+"<a style='cursor:help;text-decoration:none;color:black;' data-toggle='tooltip' title='"+asroom+"'>"+Schedules[i].room+"</a></td>"+
                             "<td >"+ Schedules[i].enrld+"/"+Schedules[i].enrlcap+"</td>"+
                             "<td>"+Schedules[i].remarks+"</td>"+
                             "</tr>");
 
 
-
                     }
+                    $("#schedtable").DataTable(
+                        {
+                            "pageLength": 30,
+                            "bLengthChange": false
+
+                        }
+
+
+                    );
 
                 }
                 else
                 {
-                    $(".datashit").append( "NO COURSE OFFERINGS DAMN");
+                    $(".datashit2").append( "<h1 class='text-center'>No Course Offerings Found for "+$(event.target).data('course')+"</h1>");
+                    $("#search_btn").hide();
                 }
             }
-			$("table").dataTable();
             jqXHR=null;
 
         }

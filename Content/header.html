@@ -18,18 +18,22 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li id="homlnk" class="navl"><a href="home.php">Home</a></li>
-                    <li id="faclnk" class="navl"><a href="faculty.php">Faculty</a></li>
-                    <li id="courselnk" class="navl"><a href="courses.php">Courses</a></li>
-                    <li id="eventlnk"  class="navl"><a href="events.php">Events</a></li>
-                    <li id="abtlnk"  class="navl"><a href="about.php">About</a></li>
+                    <li id="homlnk" class="navl"><a href="home.php"><i class="fa fa-home"></i> Home</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-users"></i> People
+                            <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li id="faclnk" class="navl"><a style="background:white;" href="faculty.php"> Faculty</a></li>
+                            <li id="orglnk" class="navl"><a href="orgs.php">Organizations</a></li>
+
+                        </ul>
+                    </li>
+                    <li id="courselnk" class="navl"><a href="courses.php"><i class="fa fa-book"></i> Courses</a></li>
+                    <li id="eventlnk"  class="navl"><a href="events.php"><i class="fa fa-calendar"></i> Events</a></li>
+                    <li id="abtlnk"  class="navl"><a href="about.php"><i class="fa fa-info-circle"></i> About</a></li>
 
                 </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="../navbar/">Login</a></li>
-                    <li><a href="../navbar-static-top/">Search</a></li>
 
-                </ul>
             </div><!--/.nav-collapse -->
         </div>
     </nav>

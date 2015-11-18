@@ -5,30 +5,34 @@
 <link rel="stylesheet" href="css/bootstrap.css" />
 <link rel="stylesheet" href="css/about.css">
 <link rel="stylesheet" href="css/global.css">
-
-<link rel="stylesheet" href="css/icons.css">
+<link rel="stylesheet" href="css/font-awesome.min.css"/>
 
 <body>
 <header class="cd-header">
     <?php include("header.html");?>
 </header>
 <main class="cd-main-content">
-    <div class="cd-fixed-bg cd-bg-1">
-        <h1>Electronics and Communications Department <br><span>De La Salle University - Manila</span></h1>
+    <div style="background:url(images/UI/aboutbanner.jpg)" class="cd-fixed-bg cd-bg-1">
+        <h1>        <img src="images/UI/homelogo.png"><br>
+            <small style="color:white">De La Salle University Manila</small><br>
+           <!-- <a href="#vision"><button class="btn btn-lg btn-default">Vision</button></a> |
+            <a href="#mission"><button class="btn btn-lg btn-default">Mission</button></a>-->
+
+        </h1>
     </div> <!-- cd-fixed-bg -->
 
-    <div  class="cd-scrolling-bg cd-color-2">
+    <div id="vision"  class="cd-scrolling-bg cd-color-2">
         <div style="height:200px;"  class="cd-container">
             <h2 style="color:#26e468;font-family:'Roboto', serif;font-size:50px;">VISION</h2>
             <p style="color:white;font-size:24px;font-family:Helvetica;" CLASS="text-justify text-left">The Department of Electronics and Communications Engineering offers Electronics and Communications Engineering (ECE) and Computer Engineering (CpE) programs. The department envisions the ECE and CpE graduates as competent and ethical professional in the area they have chosen.  For the ECE, the areas are in Electronics, Communications, and Digital Signal Processing.  For the CpE, the areas are in Embedded Systems, Computer Hardware Architecture, Computer Networks, Multimedia Systems and Machine Learning.</p>
         </div> <!-- cd-container -->
     </div> <!-- cd-scrolling-bg -->
 
-    <div class="cd-fixed-bg cd-bg-2">
+    <div style="background-size:cover;background:url(images/UI/coursesbanner.png);" class="cd-fixed-bg cd-bg-2">
         <h2></h2>
     </div> <!-- cd-fixed-bg -->
 
-    <div style="height:900px;"  class="cd-scrolling-bg cd-color-2">
+    <div id="mission" style="height:900px;"  class="cd-scrolling-bg cd-color-2">
         <div   class="cd-container">
             <h2 style="color:#26e468;font-family:'Roboto', serif;font-size:50px;">MISSION</h2>
 
@@ -57,16 +61,21 @@
                   </td></tr>
           </table>
         </div> <!-- cd-container -->
+
+    </div> <!-- cd-scrolling-bg -->
+    <div style="min-height:332px;" class="cd-scrolling-bg cd-color-1">
+
+        <?php include("footer.html");?>
+
     </div> <!-- cd-scrolling-bg -->
 
-
 </main>
-<footer class="cd-footer"><!-- cd-main-content -->
-<?php include("footer.html");?>
-</footer>
+
 </body>
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
-
+<script>
+    $("#footer").show();
+</script>
 
 </html>

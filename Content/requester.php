@@ -211,80 +211,13 @@ function showcoursedescription()
 	$finder = new DomXPath($DOM);
 	$classname = "data";
 	$nodes = $finder->query("//table[contains(concat(' ', @width, ' '), '100%')]//tr//td[last()]");
-	$rowarray = array();
-	$schedlist = array();
-	for ($a = 1; $a < $nodes->length; $a++) {
-		echo $nodes->item($a)->nodeValue . "\n";
-		array_push($rowarray, str_replace("\n", ',', $nodes->item($a)->nodeValue));
-	}
+
+		echo  str_replace("\n", ',', $nodes->item(2)->nodeValue);
 
 
-	for ($i = 0; $i < sizeof($rowarray); $i++) {
-
-		$newarray = explode(',', $rowarray[$i]);
-//echo $newarray[0]." ".$newarray[1]." ".$newarray[2]." ".$newarray[3]." ".$newarray[4]." ".$newarray[5]." ".$newarray[6]." ".$newarray[7]." ".$newarray[8]."\n";
-		array_pop($newarray);
-		$value = $newarray[0];
-		$size = sizeof($newarray);
 
 
-		if ($size == 9) //check if course number
-		{
-			if (preg_match("#[0-9]#", $value)) //check if class numbr
-			{
 
-				$newsched = new Schedule(
-					$newarray[0],
-					$newarray[1],
-					$newarray[2],
-					$newarray[3],
-					$newarray[4],
-					$newarray[5],
-					$newarray[6],
-					$newarray[7],
-					$newarray[8]
-				);
-				array_push($schedlist, $newsched);
-				//echo "Row Contains Complete Sched Details " . $newsched -> classnum;
-				//echo sizeof($schedlist);
-			} else  //check if  new date
-			{
-
-				$updatedsched = array_pop($schedlist);
-				$oldval = $updatedsched->day;
-				$updatedsched->day = $oldval . "<br>" . $newarray[3];
-				$oldval = $updatedsched->time;
-				$updatedsched->time = $oldval . "<br>" . $newarray[4];
-				$oldval = $updatedsched->room;
-				$updatedsched->room = $oldval . "<br>" . $newarray[5];
-				if ($newarray[8] != "") {
-					$oldval = $updatedsched->remarks;
-					$updatedsched->remarks = $oldval . "<br>" . $newarray[7];
-				}
-				array_push($schedlist, $updatedsched);
-				//echo sizeof($schedlist);
-			}
-		} else //check if prof
-		{
-
-			$updatedsched = array_pop($schedlist);
-			$oldval = $updatedsched->remarks;
-			if (strlen($oldval) > 0 && $oldval != "FRESHMAN BLOCK") {
-				$updatedsched->remarks = $oldval . $newarray[0] . "" . $newarray[1];
-			} else if ($oldval == "FRESHMAN BLOCK") {
-				$updatedsched->remarks = $oldval . "<br>" . $newarray[0] . " " . $newarray[1];
-			} else {
-				$updatedsched->remarks = $oldval . "<br>" . $newarray[0] . " " . $newarray[1];
-
-
-			}
-			array_push($schedlist, $updatedsched);
-			//    echo sizeof($schedlist);
-
-			//echo ($schedlist[sizeof($schedlist)] -> classnum);
-			//echo "Row Contains Professor Only" . $newarray[0] . $newarray[1];
-		}
-	}
 
 }
 
